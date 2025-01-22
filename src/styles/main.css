@@ -1,0 +1,606 @@
+/* Import all CSS modules */
+@import 'reset.css';
+@import 'navigation.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+/* Root Variables */
+:root {
+    --primary-color: #00ff88;
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    --font-family: 'Roboto', sans-serif;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global anti-aliasing */
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Hero section styles */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.15);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-logo {
+    max-width: 500px;
+    width: 90%;
+    height: auto;
+    animation: unblur 1.5s ease-out forwards;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+}
+
+@keyframes unblur {
+    0% {
+        filter: blur(20px);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 250px;
+    }
+}
+
+/* About section styles */
+.about-section {
+    padding: 4rem 2rem;
+    background: #000000;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-block {
+    position: relative;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cccccc;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+.about-text h2 {
+    font-family: 'NerminsGraffiti', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.about-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.about-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.image-block {
+    position: relative;
+}
+
+.profile-pic {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.02);
+}
+
+/* Image anti-aliasing */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Team section styles */
+.team-section {
+    padding: 4rem 0;
+    background-color: #000000;
+}
+
+.team-header {
+    font-family: 'NerminsGraffiti', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    padding: 2rem 0;
+}
+
+.team-member {
+    flex: 0 0 auto;
+    width: 180px;
+    text-align: center;
+}
+
+.member-image-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: transform 0.5s ease;
+}
+
+.member-image-wrapper:hover .member-image {
+    transform: scale(1.2);
+}
+
+.member-image:hover {
+    transform: none;
+}
+
+.member-info h3 {
+    font-family: 'NerminsGraffiti', sans-serif;
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    color: white;
+}
+
+.twitter-handle {
+    color: #1da1f2;
+    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-weight: 100;
+    letter-spacing: 0.05em;
+}
+
+@font-face {
+    font-family: 'NerminsGraffiti';
+    src: url('../assets/fonts/Nermins Graffiti.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (max-width: 1200px) {
+    .team-grid {
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
+    
+    .team-member {
+        width: 160px;
+    }
+    
+    .member-image-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* Gallery section styles */
+.gallery-section {
+    padding: 4rem 2rem;
+    background-color: #000000;
+    color: white;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.gallery-image {
+    flex: 1;
+}
+
+.gallery-img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+}
+
+.gallery-content {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+}
+
+.gallery-content h2 {
+    font-family: 'NerminsGraffiti', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    letter-spacing: 0.05em;
+}
+
+.gallery-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .gallery-content {
+        padding: 1rem 0;
+    }
+}
+
+/* Footer styles */
+footer {
+    background-color: #000000;
+    padding: 3rem 0;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-logos {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 70px;
+    width: auto;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.footer-logo:hover {
+    opacity: 0.7;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+footer p {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 1;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+footer p:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: -0.2rem;
+}
+
+.footer-social .social-icon {
+    color: #ffffff;
+    opacity: 1;
+    transition: color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.footer-social .social-icon:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    .footer-logos {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-logo {
+        height: 60px;
+    }
+}
+
+/* Utility classes */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #00ff88;
+    color: #1a1a1a;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 2rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 250px;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Prevent text selection */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Allow text selection in input fields and textareas */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}

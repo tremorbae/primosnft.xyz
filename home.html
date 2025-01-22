@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="web3-injection" content="false">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Primos NFT Collection - A community within communities that have been kicking it for years">
+    <title>Primos NFT</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Load our application code -->
+    <script type="module" src="src/index.js"></script>
+</head>
+<body>
+    <div id="root">
+        <header>
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="/">
+                        <img src="src/assets/images/primos-head-logo.png" alt="Primos Logo" class="nav-logo">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-trigger">Marketplace <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.sniper.xyz/collection/primos" target="_blank" rel="noopener noreferrer"><img src="src/assets/images/sniper-icon.png" alt="Sniper" class="marketplace-icon" /> Sniper</a></li>
+                            <li><a href="https://magiceden.us/marketplace/primos" target="_blank" rel="noopener noreferrer"><img src="src/assets/images/me-icon.png" alt="Magic Eden" class="marketplace-icon" /> Magic Eden</a></li>
+                            <li><a href="https://www.tensor.trade/trade/primos" target="_blank" rel="noopener noreferrer"><img src="src/assets/images/tensor-icon.png" alt="Tensor" class="marketplace-icon" /> Tensor</a></li>
+                            <li><a href="https://launchmynft.io/collections/7p59RgWXUMx1Ew4BMywE2htGmNuqpuyCpC7g9QjEF6jU/cC1SJkvSxao5sP9TYhAF" target="_blank" rel="noopener noreferrer"><img src="src/assets/images/lmnft-icon.png" alt="LMNFT" class="marketplace-icon" /> LMNFT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://x.com/primosnft" class="social-icon" title="X (Twitter)" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://discord.gg/juCfQCQtRh" class="social-icon" title="Discord" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+                <button class="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-video-container">
+                    <video 
+                        id="hero-video"
+                        class="hero-video" 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline>
+                        <source src="src/assets/videos/PrimosNFT-HeroBanner.mp4" type="video/mp4">
+                        <source src="src/assets/videos/PrimosNFT-HeroBanner.mov" type="video/quicktime">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <img src="src/assets/images/primos-logo.png" alt="Primos Logo" class="hero-logo">
+                </div>
+            </section>
+
+            <section class="about-section" id="about">
+                <div class="about-container">
+                    <div class="about-block text-block">
+                        <div class="about-text">
+                            <h2>Welcome To Primos</h2>
+                            <p>Primos are a collection of 3,069 NFTs. We are a community within communities that have been kicking it for years.</p>
+                            <button class="about-btn">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="about-block image-block">
+                        <img src="src/assets/images/primo-2371.png" alt="Primo NFT" class="profile-pic">
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery-section" id="gallery">
+                <div class="gallery-container">
+                    <div class="gallery-image">
+                        <img src="src/assets/images/16-Primos.png" alt="16 Primos Collection" class="gallery-img">
+                    </div>
+                    <div class="gallery-content">
+                        <h2>Our Collection</h2>
+                        <p>Discover the unique world of Primos through our carefully curated collection. Each piece tells a story of creativity, community, and cultural fusion.</p>
+                        <button class="gallery-btn">Explore More</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section" id="team">
+                <div class="container">
+                    <h2 class="team-header">The Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-image-wrapper">
+                                <img src="src/assets/images/team/trem.jpg" alt="Team member Trem" class="member-image">
+                            </div>
+                            <div class="member-info">
+                                <h3>Trem</h3>
+                                <a href="https://twitter.com/tremorbae" target="_blank" rel="noopener noreferrer" class="twitter-handle">@tremorbae</a>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image-wrapper">
+                                <img src="src/assets/images/team/lordio.jpg" alt="Team member Lordio" class="member-image">
+                            </div>
+                            <div class="member-info">
+                                <h3>Lordio</h3>
+                                <a href="https://twitter.com/lordioweb3" target="_blank" rel="noopener noreferrer" class="twitter-handle">@lordioweb3</a>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image-wrapper">
+                                <img src="src/assets/images/team/zest.jpg" alt="Team member Zesty" class="member-image">
+                            </div>
+                            <div class="member-info">
+                                <h3>Zesty</h3>
+                                <a href="https://twitter.com/zesty_degen36" target="_blank" rel="noopener noreferrer" class="twitter-handle">@zesty_degen36</a>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image-wrapper">
+                                <img src="src/assets/images/team/jir.jpg" alt="Team member Jiraiya" class="member-image">
+                            </div>
+                            <div class="member-info">
+                                <h3>Jiraiya</h3>
+                                <a href="https://twitter.com/jiraiyathenoble" target="_blank" rel="noopener noreferrer" class="twitter-handle">@jiraiyathenoble</a>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image-wrapper">
+                                <img src="src/assets/images/team/clip.jpg" alt="Team member Clip" class="member-image">
+                            </div>
+                            <div class="member-info">
+                                <h3>Clip</h3>
+                                <a href="https://twitter.com/paperclip_nft" target="_blank" rel="noopener noreferrer" class="twitter-handle">@paperclip_nft</a>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image-wrapper">
+                                <img src="src/assets/images/team/syntax.jpg" alt="Team member Syntax" class="member-image">
+                            </div>
+                            <div class="member-info">
+                                <h3>Syntax</h3>
+                                <a href="https://twitter.com/0ffsetsynt4x" target="_blank" rel="noopener noreferrer" class="twitter-handle">@0ffsetsynt4x</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="footer-logos">
+                    <img src="src/assets/images/Primos-Footer-Logo.png" alt="Primos Logo" class="footer-logo">
+                </div>
+                <div class="footer-content">
+                    <p>&copy; 2025 Primos, LLC</p>
+                    <div class="footer-social">
+                        <a href="https://x.com/primosnft" class="social-icon" title="X (Twitter)" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://discord.gg/juCfQCQtRh" class="social-icon" title="Discord" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -3,6 +3,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Ensure smooth text on mobile webkit */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 2dppx) {
+    * {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
 }
 
 body {
@@ -28,4 +39,6 @@ ul {
 img {
     max-width: 100%;
     height: auto;
+    image-rendering: -webkit-optimize-contrast; /* Improve image sharpness */
+    image-rendering: crisp-edges;
 }

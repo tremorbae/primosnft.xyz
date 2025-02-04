@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://primosnft.xyz/sitemap.xml
+
+# Allow crawling of all content
+Disallow:

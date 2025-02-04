@@ -19,6 +19,9 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Global anti-aliasing */
@@ -29,25 +32,46 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Typography */
+/* Typography with enhanced rendering */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 p {
     margin-bottom: 1rem;
     font-family: var(--font-family);
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
+/* Links with smooth rendering */
 a, a:link, a:visited, a:hover, a:active {
     color: #ffffff;
     text-decoration: none;
     font-family: var(--font-family);
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Mobile optimization for text rendering */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 2dppx) {
+    body,
+    h1, h2, h3, h4, h5, h6,
+    p,
+    a, a:link, a:visited, a:hover, a:active {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
 }
 
 a:hover {

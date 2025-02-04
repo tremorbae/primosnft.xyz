@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "Primos NFT Web Application",
   "main": "server.js",
+  "homepage": "https://tremorbae.github.io/primosnft.xyz",
   "dependencies": {
     "@solana/web3.js": "^1.87.6",
     "chart.js": "^4.4.1",
     "express": "^4.18.2"
   },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build"
   }
 }

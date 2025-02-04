@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('active');
         document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         
+        // Reset scroll position of mobile menu when opening
+        if (mobileMenu.classList.contains('active')) {
+            mobileMenu.scrollTop = 0;
+        }
+        
         // Close any open dropdowns when closing the mobile menu
         if (!mobileMenu.classList.contains('active')) {
             document.querySelectorAll('.mobile-menu .dropdown').forEach(dropdown => {
@@ -60,6 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
+            
+            // Reset scroll position
+            setTimeout(() => {
+                mobileMenu.scrollTop = 0;
+            }, 300);
             
             // Close any open dropdowns
             document.querySelectorAll('.mobile-menu .dropdown').forEach(dropdown => {

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger?.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         mobileMenu.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        document.body.classList.toggle('no-scroll');
         
         // Reset scroll position of mobile menu when opening
         if (mobileMenu.classList.contains('active')) {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             !e.target.closest('.hamburger')) {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.classList.remove('no-scroll');
             
             // Reset scroll position
             setTimeout(() => {
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth > 768 && mobileMenu?.classList.contains('active')) {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.classList.remove('no-scroll');
             
             // Close any open dropdowns
             document.querySelectorAll('.mobile-menu .dropdown').forEach(dropdown => {

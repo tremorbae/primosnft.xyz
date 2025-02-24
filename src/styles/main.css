@@ -159,6 +159,10 @@ h2 {
     z-index: 3;
     text-align: center;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-2rem);
 }
 
 .hero-logo {
@@ -169,6 +173,18 @@ h2 {
     transform: translateZ(0);
     backface-visibility: hidden;
     filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        transform: translateX(-1rem) translateY(-2rem);
+        padding-top: 0;
+    }
+    
+    .hero-logo {
+        max-width: 250px;
+        margin-top: -1rem;
+    }
 }
 
 @keyframes unblur {
@@ -193,12 +209,6 @@ h2 {
     color: var(--text-color);
     max-width: 600px;
     margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .hero-logo {
-        max-width: 250px;
-    }
 }
 
 /* About section styles */

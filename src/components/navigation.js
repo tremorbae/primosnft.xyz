@@ -62,4 +62,39 @@ export function initNavigation() {
     mobileNavItems.forEach((item, index) => {
         item.style.transitionDelay = `${index * 0.1}s`;
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
+
+        // Toggle mobile menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+
+        // Handle marketplace dropdown in mobile menu
+        const marketplaceItem = document.querySelector('.mobile-menu .marketplace-item');
+        marketplaceItem.addEventListener('click', (e) => {
+            marketplaceItem.classList.toggle('active');
+            e.stopPropagation();
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    });
 }

@@ -177,13 +177,13 @@ h2 {
 
 @media (max-width: 768px) {
     .hero-content {
-        transform: translateX(-1rem) translateY(-2rem);
-        padding-top: 0;
+        transform: translateX(-1rem) translateY(-1rem);
+        padding-top: 0.5rem;
     }
     
     .hero-logo {
         max-width: 250px;
-        margin-top: -1rem;
+        margin-top: -0.5rem;
     }
 }
 

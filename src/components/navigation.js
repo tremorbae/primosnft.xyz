@@ -5,6 +5,8 @@ export function initNavigation() {
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileDropdownTrigger = document.querySelector('.mobile-dropdown-trigger');
     const mobileDropdown = document.querySelector('.mobile-dropdown');
+    const desktopDropdownTrigger = document.querySelector('.dropdown-trigger');
+    const desktopDropdown = document.querySelector('.dropdown');
 
     // Handle scroll event to change navbar style
     const handleScroll = () => {
@@ -36,6 +38,15 @@ export function initNavigation() {
         });
     }
 
+    // Toggle desktop dropdown
+    if (desktopDropdownTrigger) {
+        desktopDropdownTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            desktopDropdownTrigger.classList.toggle('active');
+            desktopDropdown.classList.toggle('active');
+        });
+    }
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (mobileMenu && mobileMenu.classList.contains('active')) {
@@ -46,6 +57,16 @@ export function initNavigation() {
                 mobileDropdownTrigger.classList.remove('active');
                 mobileDropdown.classList.remove('active');
                 document.body.style.overflow = '';
+            }
+        }
+    });
+
+    // Close desktop dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (desktopDropdown && desktopDropdown.classList.contains('active')) {
+            if (!desktopDropdown.contains(e.target) && !desktopDropdownTrigger.contains(e.target)) {
+                desktopDropdown.classList.remove('active');
+                desktopDropdownTrigger.classList.remove('active');
             }
         }
     });

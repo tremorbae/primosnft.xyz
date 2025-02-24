@@ -349,9 +349,10 @@
     width: 100%;
     height: 100vh;
     height: 100dvh; /* Dynamic viewport height for mobile browsers */
-    background: rgba(0, 0, 0, 0.35);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     display: none;
     z-index: 999;
     overflow-y: auto; /* Enable scrolling if content is too tall */
@@ -515,7 +516,10 @@
 
 /* Ensure mobile menu is still visible */
 .navbar.mobile-menu-active .mobile-menu {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Navigation items with enhanced rendering */

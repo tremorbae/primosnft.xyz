@@ -597,14 +597,7 @@
 
 @media (max-width: 768px) {
     .navbar {
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
         padding: 0.4rem 1.5rem;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 1rem;
     }
 
     .nav-brand {
@@ -613,7 +606,7 @@
     }
 
     .nav-logo {
-        height: 45px;
+        height: 55px;
     }
 
     .mobile-menu-btn {
@@ -624,18 +617,30 @@
     .nav-links {
         display: none;
     }
+
+    .social-links {
+        display: none;
+    }
+
+    .desktop-social-links {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .navbar {
-        background: transparent;
+        padding: 0.4rem 1.5rem;
+        background: none;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
-        padding: 0.4rem 1.5rem;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 1rem;
+        box-shadow: none;
+    }
+
+    .navbar.scrolled {
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
     }
 
     .nav-brand {
@@ -644,7 +649,7 @@
     }
 
     .nav-logo {
-        height: 45px;
+        height: 55px;
     }
 
     .mobile-menu-btn {
@@ -653,6 +658,14 @@
     }
 
     .nav-links {
+        display: none;
+    }
+
+    .social-links {
+        display: none;
+    }
+
+    .desktop-social-links {
         display: none;
     }
 }

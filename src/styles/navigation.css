@@ -37,16 +37,13 @@
 }
 
 .nav-logo {
-    height: 55px;
     width: auto;
+    height: 55px;
     display: flex;
     align-self: center;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    image-rendering: auto;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
 }
 
 .nav-links {
@@ -731,14 +728,10 @@
 
     .nav-logo {
         width: auto;
-        height: auto;
-        max-height: none;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: crisp-edges;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
+        height: 55px;
+        image-rendering: auto;
+        -webkit-font-smoothing: none;
+        -moz-osx-font-smoothing: none;
     }
 
     .mobile-menu-btn {
@@ -783,14 +776,10 @@
 
     .nav-logo {
         width: auto;
-        height: auto;
-        max-height: none;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: crisp-edges;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
+        height: 55px;
+        image-rendering: auto;
+        -webkit-font-smoothing: none;
+        -moz-osx-font-smoothing: none;
     }
 
     .mobile-menu-btn {

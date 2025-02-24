@@ -41,11 +41,12 @@
     width: auto;
     display: flex;
     align-self: center;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .nav-links {
@@ -732,6 +733,12 @@
         width: auto;
         height: auto;
         max-height: none;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
     .mobile-menu-btn {
@@ -778,6 +785,12 @@
         width: auto;
         height: auto;
         max-height: none;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
     .mobile-menu-btn {

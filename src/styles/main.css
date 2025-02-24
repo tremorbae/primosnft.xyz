@@ -692,13 +692,13 @@ footer .container {
 .footer-logo {
     height: 80px;
     width: auto;
-    opacity: 1;
     transition: opacity 0.3s ease;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .footer-logo:hover {
@@ -715,7 +715,12 @@ footer .container {
         width: auto;
         height: auto;
         max-width: 100%;
-        object-fit: contain;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 }
 

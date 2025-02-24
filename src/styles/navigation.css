@@ -33,6 +33,7 @@
     display: flex;
     align-items: center;
     flex: 1;
+    text-decoration: none;
 }
 
 .nav-logo {
@@ -601,13 +602,14 @@
         -webkit-backdrop-filter: none;
         padding: 0.4rem 1.5rem;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
+        gap: 1rem;
     }
 
     .nav-brand {
-        justify-content: flex-start;
         margin: 0;
+        padding: 0;
     }
 
     .nav-logo {
@@ -616,7 +618,7 @@
 
     .mobile-menu-btn {
         display: flex;
-        order: 2;
+        margin-left: auto;
     }
 
     .nav-links {
@@ -631,13 +633,14 @@
         -webkit-backdrop-filter: none;
         padding: 0.4rem 1.5rem;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
+        gap: 1rem;
     }
 
     .nav-brand {
-        justify-content: flex-start;
         margin: 0;
+        padding: 0;
     }
 
     .nav-logo {
@@ -646,7 +649,7 @@
 
     .mobile-menu-btn {
         display: flex;
-        order: 2;
+        margin-left: auto;
     }
 
     .nav-links {

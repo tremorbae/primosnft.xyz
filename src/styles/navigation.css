@@ -600,6 +600,9 @@
         background: transparent;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
     }
 
     .navbar-scrolled {
@@ -610,7 +613,7 @@
     }
 
     .nav-logo {
-        height: 55px;
+        height: 45px;
     }
 
     .nav-links {
@@ -653,6 +656,7 @@
 
     .nav-brand {
         justify-content: center;
+        margin-right: auto;
     }
 
     .navbar {

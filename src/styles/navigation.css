@@ -497,177 +497,32 @@
 
 .mobile-social-links {
     display: flex;
-    gap: 3rem;
-    margin-top: auto;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.mobile-social-links a {
-    color: #fff;
-    font-size: 2rem;
-    transition: color 0.3s ease;
-}
-
-.mobile-dropdown.active .mobile-dropdown-item:nth-child(1) { 
-    transition-delay: 0.1s;
+.mobile-social-links .social-icon {
+    color: #ffffff;
+    font-size: 1.5rem;
     opacity: 1;
-    transform: translateY(0);
-}
-.mobile-dropdown.active .mobile-dropdown-item:nth-child(2) { 
-    transition-delay: 0.15s;
-    opacity: 1;
-    transform: translateY(0);
-}
-.mobile-dropdown.active .mobile-dropdown-item:nth-child(3) { 
-    transition-delay: 0.2s;
-    opacity: 1;
-    transform: translateY(0);
-}
-.mobile-dropdown.active .mobile-dropdown-item:nth-child(4) { 
-    transition-delay: 0.25s;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-dropdown:not(.active) .mobile-dropdown-item:nth-child(4) { 
-    transition-delay: 0.1s;
-}
-.mobile-dropdown:not(.active) .mobile-dropdown-item:nth-child(3) { 
-    transition-delay: 0.15s;
-}
-.mobile-dropdown:not(.active) .mobile-dropdown-item:nth-child(2) { 
-    transition-delay: 0.2s;
-}
-.mobile-dropdown:not(.active) .mobile-dropdown-item:nth-child(1) { 
-    transition-delay: 0.25s;
-}
-
-.mobile-dropdown.active .mobile-dropdown-item:hover {
-    opacity: 0.5;
-}
-
-.mobile-menu .marketplace-item {
-    position: relative;
-    cursor: pointer;
-}
-
-.mobile-menu .marketplace-item .dropdown-content {
-    position: relative;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    margin-top: 1rem;
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    width: 200px;
-    text-align: center;
-}
-
-.mobile-menu .marketplace-item.active .dropdown-content {
-    display: flex;
-}
-
-.mobile-menu .marketplace-item .dropdown-content a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem;
     transition: opacity 0.3s ease;
 }
 
-.mobile-menu .marketplace-item .dropdown-content a:hover {
+.mobile-social-links .social-icon:hover {
     opacity: 0.7;
 }
 
-.mobile-menu-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 2rem;
-}
-
-.mobile-marketplace {
-    position: relative;
-    text-align: center;
-}
-
-.mobile-dropdown-trigger {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    color: #fff;
-    font-size: 1.2rem;
-}
-
-.mobile-dropdown-trigger i {
-    transition: transform 0.3s ease;
-}
-
-.mobile-dropdown {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-    padding: 1rem;
-}
-
-.mobile-dropdown.active {
-    display: flex;
-}
-
-.mobile-dropdown a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.mobile-dropdown .marketplace-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-
-.mobile-dropdown .marketplace-name {
-    font-size: 1rem;
-}
-
-.mobile-dropdown a:hover {
-    color: #f0f0f0;
-}
-
-.mobile-social-links {
-    display: flex;
-    gap: 2rem;
-    margin-top: auto;
-}
-
-.mobile-social-links a {
-    color: #fff;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.mobile-social-links a:hover {
-    color: #f0f0f0;
-}
-
-/* Hide navbar background when mobile menu is active */
-.navbar.mobile-menu-active {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: none !important;
-}
-
-/* Ensure mobile menu is still visible */
-.navbar.mobile-menu-active .mobile-menu {
-    background: rgba(0, 0, 0, 0.95);
+/* Hide mobile menu elements in desktop view */
+@media screen and (min-width: 769px) {
+    .mobile-menu,
+    .mobile-menu-content,
+    .mobile-marketplace,
+    .mobile-dropdown-trigger,
+    .mobile-dropdown,
+    .mobile-social-links {
+        display: none !important;
+    }
 }
 
 /* Navigation items with enhanced rendering */
@@ -791,18 +646,6 @@
 
     .desktop-social-links {
         display: none;
-    }
-}
-
-/* Hide mobile menu elements in desktop view */
-@media screen and (min-width: 769px) {
-    .mobile-menu,
-    .mobile-menu-content,
-    .mobile-marketplace,
-    .mobile-dropdown-trigger,
-    .mobile-dropdown,
-    .mobile-social-links {
-        display: none !important;
     }
 }
 

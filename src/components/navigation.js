@@ -3,6 +3,9 @@ export function initNavigation() {
     const navbar = document.querySelector('.navbar');
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileDropdownTrigger = document.querySelector('.mobile-dropdown-trigger');
+    const mobileDropdown = document.querySelector('.mobile-dropdown');
 
     // Handle scroll event to change navbar style
     const handleScroll = () => {
@@ -15,27 +18,48 @@ export function initNavigation() {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Toggle navigation menu on hamburger click
+    // Toggle mobile menu on hamburger click
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
     }
 
-    // Close navigation menu when clicking outside
+    // Toggle mobile dropdown
+    if (mobileDropdownTrigger) {
+        mobileDropdownTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileDropdown.classList.toggle('active');
+            const icon = mobileDropdownTrigger.querySelector('.fa-chevron-down');
+            icon.style.transform = mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : '';
+        });
+    }
+
+    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         }
     });
 
-    // Handle hero video
-    const video = document.getElementById('hero-video');
-    if (video) {
-        video.play().catch(error => {
-            console.error('Error playing video:', error);
-        });
-    }
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Handle mobile nav item animations
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    mobileNavItems.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
+    });
 }

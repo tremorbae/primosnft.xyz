@@ -694,7 +694,11 @@ footer .container {
     width: auto;
     opacity: 1;
     transition: opacity 0.3s ease;
-    object-fit: contain;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }
 
 .footer-logo:hover {

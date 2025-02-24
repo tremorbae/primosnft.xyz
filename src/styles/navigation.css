@@ -41,6 +41,11 @@
     width: auto;
     display: flex;
     align-self: center;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }
 
 .nav-links {

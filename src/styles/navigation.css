@@ -163,10 +163,13 @@
     opacity: 1 !important;
 }
 
-.dropdown-trigger .fa-chevron-down {
-    font-size: 0.8em;
-    transform: rotate(-90deg);
+.dropdown-trigger i {
     transition: transform 0.3s ease;
+    transform: rotate(-90deg);
+}
+
+.dropdown.active .dropdown-trigger i {
+    transform: rotate(0deg);
 }
 
 .dropdown:hover .fa-chevron-down {

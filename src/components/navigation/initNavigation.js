@@ -38,6 +38,8 @@ function setupDropdowns() {
     // Mobile dropdowns
     const mobileTriggers = document.querySelectorAll('.mobile-menu .mobile-dropdown-trigger');
     const mobileDropdowns = document.querySelectorAll('.mobile-menu .mobile-dropdown');
+    const mobileMenuContent = document.querySelector('.mobile-menu-content');
+    const mobileNavLinks = document.querySelector('.mobile-nav-links');
 
     mobileTriggers.forEach((trigger, index) => {
         const dropdown = mobileDropdowns[index];
@@ -58,10 +60,14 @@ function setupDropdowns() {
                 // If dropdown is already open, close it
                 dropdown.classList.remove('active');
                 trigger.classList.remove('active');
+                if (mobileMenuContent) mobileMenuContent.classList.remove('active-dropdown');
+                if (mobileNavLinks) mobileNavLinks.classList.remove('active-dropdown');
             } else {
                 // If dropdown is closed, open it
                 dropdown.classList.add('active');
                 trigger.classList.add('active');
+                if (mobileMenuContent) mobileMenuContent.classList.add('active-dropdown');
+                if (mobileNavLinks) mobileNavLinks.classList.add('active-dropdown');
             }
         });
     });

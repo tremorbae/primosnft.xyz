@@ -180,8 +180,10 @@ section {
     flex-direction: column;
     gap: 0;
     max-width: 98%;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    position: relative;
+    transition: transform 0.3s ease;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 .mobile-nav-links li {
@@ -189,19 +191,26 @@ section {
     max-width: 100%;
     margin: 0;
     padding: 0;
+    border: none;
 }
 
 .mobile-nav-links li a,
 .mobile-nav-links .mobile-dropdown-trigger {
     width: 100%;
     max-width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 1.75rem;
     margin: 0;
     display: flex;
     align-items: center;
     position: relative;
     justify-content: center;
     text-align: center;
+    font-size: 1.25rem;
+    border: none;
+}
+
+.mobile-nav-links li a {
+    font-size: 1.25rem;
 }
 
 .mobile-social-links {
@@ -209,12 +218,51 @@ section {
     justify-content: center;
     gap: 0;
     margin-top: 2rem;
-    background: rgba(0, 0, 0, 0.8);
     padding: 1.5rem;
     border-radius: 4px;
     width: 100%;
     max-width: 98%;
     margin: 0 auto;
+}
+
+.mobile-social-li.navbar {
+    height: 80px;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: transparent;
+    backdrop-filter: none;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+    
+    .nav-links {
+        gap: 0.25rem;
+    }
+
+    .nav-links a,
+    .nav-links li a {
+        font-size: 1rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    .social-links {
+        display: none !important;
+    }
+    
+    .navbar .social-links {
+        display: none !important;
+    }
 }
 
 .mobile-social-links a {
@@ -1095,6 +1143,15 @@ h2 {
 
     .hero p {
         font-size: 1.2rem;
+    }
+
+    /* Meme Generator Styles */
+    #testCanvas {
+        width: 90vw !important;
+        height: 90vw !important;
+        max-width: 500px !important;
+        max-height: 500px !important;
+        margin: 0 auto;
     }
 }
 

@@ -40,8 +40,13 @@ img {
     margin: 0;
     padding: 0;
     list-style: none;
+    border: none;
+    outline: none;
 }
 
 .mobile-nav-links li {
     padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
 }

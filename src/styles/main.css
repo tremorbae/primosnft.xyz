@@ -175,12 +175,10 @@ section {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 0;
-    list-style: none;
-    margin: 0 auto;
     max-width: 98%;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -191,29 +189,19 @@ section {
     max-width: 100%;
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
 .mobile-nav-links li a,
 .mobile-nav-links .mobile-dropdown-trigger {
     width: 100%;
     max-width: 100%;
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
     margin: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
     position: relative;
-    list-style: none;
-}
-
-.mobile-nav-links .mobile-dropdown-trigger::after {
-    position: absolute;
-    right: 14.5rem;
-}
-
-.mobile-nav-links li:nth-child(3) .mobile-dropdown-trigger::after {
-    right: 16.75rem;
+    justify-content: center;
+    text-align: center;
 }
 
 .mobile-social-links {

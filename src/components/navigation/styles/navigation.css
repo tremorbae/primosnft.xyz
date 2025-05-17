@@ -126,7 +126,7 @@ body.mobile-menu-active {
 
     .nav-links a,
     .nav-links li a {
-        font-size: 1rem;
+        font-size: 1.25rem;
         padding: 0.5rem 0.5rem;
     }
 }
@@ -339,6 +339,8 @@ li.active .dropdown-menu {
     max-width: 98%;
     position: relative;
     transition: transform 0.3s ease;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 .mobile-nav-links.active-dropdown {
@@ -358,7 +360,8 @@ li.active .dropdown-menu {
 .mobile-nav-links li {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 0;
+    margin: 0;
 }
 
 .mobile-nav-links .mobile-nav-item,
@@ -366,7 +369,7 @@ li.active .dropdown-menu {
     display: block;
     width: 100%;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: 4px;
     background: transparent;
     transition: all 0.3s ease;
@@ -375,10 +378,11 @@ li.active .dropdown-menu {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.25rem;
 }
 
 .mobile-nav-links li a[href="/"] {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 400;
 }
 }
@@ -390,6 +394,7 @@ li.active .dropdown-menu {
     align-items: center;
     text-align: center;
     padding: 0;
+    gap: 0;
 }
 
 .mobile-nav-group {
@@ -398,19 +403,20 @@ li.active .dropdown-menu {
     align-items: center;
     width: 100%;
     padding: 0;
+    gap: 0;
 }
 
 .mobile-nav-item,
 .mobile-dropdown-trigger {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: white;
     text-decoration: none;
-    padding: 1rem 1rem;
+    padding: 1rem;
     display: block;
     width: 100%;
     text-align: center;
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.9);
     border-radius: 2px;
     margin: 0;
 }
@@ -446,29 +452,34 @@ li.active .dropdown-menu {
     position: relative;
     width: 100%;
     margin-top: 0;
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .mobile-dropdown.active {
     max-height: 500px;
     margin-top: 0;
+    visibility: visible;
+    opacity: 1;
 }
 
 .mobile-dropdown a {
     display: flex;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1rem;
     color: white;
     text-decoration: none;
     transition: all 0.3s ease;
     width: 100%;
     background: transparent;
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 400;
 }
 
 .mobile-dropdown a span {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: white;
     text-decoration: none;
     white-space: nowrap;
@@ -478,6 +489,7 @@ li.active .dropdown-menu {
 
 .mobile-dropdown a i {
     font-size: 1.1rem;
+    margin-right: 0.5rem;
 }
 
 .mobile-dropdown img {

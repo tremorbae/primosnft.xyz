@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadImage(src) {
         const img = new Image();
         img.onload = () => {
+            currentImage = img; // Track the current image
             drawImage(img);
         };
         img.src = src;

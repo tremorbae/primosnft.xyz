@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textFont = 'bold 48px Impact';
     const textColor = '#FFFFFF';
     const textStrokeColor = '#000000';
-    const textStrokeWidth = 8;
+    const textStrokeWidth = 6; // Reduced stroke width to prevent spikes
     const letterSpacing = '0.1em';
 
     // Function to draw text on canvas
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineWidth = textStrokeWidth;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
+        ctx.miterLimit = 4; // Reduced miter limit to prevent spikes
 
         const drawTextLine = (text, y) => {
             const x = canvas.width / 2;

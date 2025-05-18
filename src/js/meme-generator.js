@@ -95,16 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const topText = topTextInput.value.trim() || 'There is no dev';
         const bottomText = bottomTextInput.value.trim() || 'ILY';
         
-        const baseName = topText === 'THERE IS NO DEV' && bottomText === 'ILY' ? 
+        const filename = topText === 'THERE IS NO DEV' && bottomText === 'ILY' ? 
             'There is no dev ILY' :
             `${topText} ${bottomText}`;
 
-        const cleanBaseName = baseName
+        const cleanFilename = filename
             .replace(/[^a-zA-Z0-9\s]/g, '')
             .replace(/\s+/g, ' ')
-            .substring(0, 45);
-
-        const cleanFilename = `${cleanBaseName}.png`;
+            .substring(0, 50);
 
         link.download = cleanFilename;
         link.href = canvas.toDataURL('image/png');

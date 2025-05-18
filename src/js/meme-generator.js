@@ -3,81 +3,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // Add download functionality
+    // Add long-press functionality for mobile devices
+    let touchStartTimestamp = 0;
+    let longPressTimeout = null;
+    const LONG_PRESS_DURATION = 1000; // 1 second
+
+    canvas.addEventListener('touchstart', (e) => {
+        touchStartTimestamp = Date.now();
+        longPressTimeout = setTimeout(() => {
+            if (Date.now() - touchStartTimestamp >= LONG_PRESS_DURATION) {
+                saveMeme();
+            }
+        }, LONG_PRESS_DURATION);
+    });
+
+    canvas.addEventListener('touchend', () => {
+        clearTimeout(longPressTimeout);
+    });
+
+    // Add download functionality for both button and long-press
     function saveMeme() {
+        const link = document.createElement('a');
+        link.download = 'meme.png';
         const dataUrl = canvas.toDataURL('image/png');
-        
-        // Get text from canvas
-        const topText = topTextInput.value.trim().replace(/[^\w\s]/g, '').toLowerCase();
-        const bottomText = bottomTextInput.value.trim().replace(/[^\w\s]/g, '').toLowerCase();
-        const fileName = `${topText}${bottomText ? '-' + bottomText : ''}.png` || 'meme.png';
-        
-        // Check if we're on iOS
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-            // For iOS, we'll use the native photo save functionality
-            const img = new Image();
-            img.src = dataUrl;
-            img.onload = () => {
-                // Create a temporary canvas to get the image data
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = img.width;
-                tempCanvas.height = img.height;
-                const tempCtx = tempCanvas.getContext('2d');
-                tempCtx.drawImage(img, 0, 0);
-                
-                // Convert to blob and create a temporary image
-                tempCanvas.toBlob((blob) => {
-                    const file = new File([blob], fileName, { type: 'image/png' });
-                    
-                    // Create a temporary input element
-                    const input = document.createElement('input');
-                    input.type = 'file';
-                    input.accept = 'image/*';
-                    input.style.display = 'none';
-                    
-                    // Create a temporary form
-                    const form = document.createElement('form');
-                    form.method = 'post';
-                    form.enctype = 'multipart/form-data';
-                    
-                    // Create a file input
-                    const fileInput = document.createElement('input');
-                    fileInput.type = 'file';
-                    fileInput.files = [file];
-                    
-                    // Append to form
-                    form.appendChild(fileInput);
-                    
-                    // Create a submit button
-                    const submit = document.createElement('button');
-                    submit.type = 'submit';
-                    submit.style.display = 'none';
-                    
-                    // Append submit button
-                    form.appendChild(submit);
-                    
-                    // Append form to body
-                    document.body.appendChild(form);
-                    
-                    // Submit form
-                    submit.click();
-                    
-                    // Clean up
-                    setTimeout(() => {
-                        form.remove();
-                        input.remove();
-                    }, 100);
-                }, 'image/png');
-            };
-        } else {
-            // For other devices, use the standard download method
-            const link = document.createElement('a');
-            link.download = fileName;
-            link.href = dataUrl;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     downloadBtn.addEventListener('click', saveMeme);
@@ -254,5 +206,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
+    // Add download functionality
+    downloadBtn.addEventListener('click', () => {
+        // Create a temporary link element
+        const link = document.createElement('a');
+        link.download = 'meme-placeholder.png';
+        
+        // Get the canvas data URL
+        const dataUrl = canvas.toDataURL('image/png');
+        
+        // Set the link href to the data URL
+        link.href = dataUrl;
+        
+        // Append the link to the body and trigger click
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
 });

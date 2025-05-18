@@ -2,11 +2,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('testCanvas');
     const ctx = canvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn');
+    const topTextInput = document.getElementById('top-text');
+    const bottomTextInput = document.getElementById('bottom-text');
+    const imageUpload = document.getElementById('image-upload');
+
+    // Text styling
+    const textFont = 'bold 48px Impact';
+    const textColor = '#FFFFFF';
+    const textStrokeColor = '#000000';
+    const textStrokeWidth = 8;
+    const letterSpacing = '0.1em';
+
+    // Function to draw text on canvas
+    function drawText() {
+        ctx.font = textFont;
+        ctx.fillStyle = textColor;
+        ctx.strokeStyle = textStrokeColor;
+        ctx.lineWidth = textStrokeWidth;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        const drawTextLine = (text, y) => {
+            const x = canvas.width / 2;
+            ctx.strokeText(text, x, y);
+            ctx.fillText(text, x, y);
+        };
+
+        if (topTextInput.value) {
+            drawTextLine(topTextInput.value.toUpperCase(), canvas.height * 0.08);
+        }
+        if (bottomTextInput.value) {
+            drawTextLine(bottomTextInput.value.toUpperCase(), canvas.height * 0.92);
+        }
+    }
+
+    // Function to draw any image on the canvas
+    function drawImage(image) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const scale = Math.min(
+            canvas.width / image.width,
+            canvas.height / image.height
+        );
+        
+        const scaledWidth = image.width * scale;
+        const scaledHeight = image.height * scale;
+        const x = (canvas.width - scaledWidth) / 2;
+        const y = (canvas.height - scaledHeight) / 2;
+        
+        ctx.drawImage(image, x, y, scaledWidth, scaledHeight);
+        drawText();
+    }
 
     // Add long-press functionality for mobile devices
     let touchStartTimestamp = 0;
     let longPressTimeout = null;
-    const LONG_PRESS_DURATION = 1000; // 1 second
+    const LONG_PRESS_DURATION = 1000;
 
     canvas.addEventListener('touchstart', (e) => {
         touchStartTimestamp = Date.now();
@@ -21,153 +72,57 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(longPressTimeout);
     });
 
-    // Add download functionality for both button and long-press
+    // Add download functionality
     function saveMeme() {
-        const link = document.createElement('a');
-        link.download = 'meme.png';
-        const dataUrl = canvas.toDataURL('image/png');
-        link.href = dataUrl;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        if (currentImage) {
+            drawImage(currentImage);
+        } else {
+            const img = new Image();
+            img.onload = () => {
+                drawImage(img);
+                finalizeSave();
+            };
+            img.src = '/src/assets/images/meme-placeholder.png';
+            return;
+        }
+        finalizeSave();
     }
 
-    downloadBtn.addEventListener('click', saveMeme);
-    const topTextInput = document.getElementById('top-text');
-    const bottomTextInput = document.getElementById('bottom-text');
-    const imageUpload = document.getElementById('image-upload');
+    function finalizeSave() {
+        const link = document.createElement('a');
+        const topText = topTextInput.value.trim() || 'There is no dev';
+        const bottomText = bottomTextInput.value.trim() || 'ILY';
+        
+        const filename = topText === 'THERE IS NO DEV' && bottomText === 'ILY' ? 
+            'There is no dev ILY.png' :
+            `${topText} ${bottomText}.png`;
+
+        const cleanFilename = filename
+            .replace(/[^a-zA-Z0-9\s]/g, '')
+            .replace(/\s+/g, ' ')
+            .substring(0, 50);
+
+        link.download = cleanFilename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
 
     // Track current image
     let currentImage = null;
 
-    // Text styling
-    const textFont = 'bold 48px Impact';
-    const textColor = '#FFFFFF';
-    const textStrokeColor = '#000000';
-    const textStrokeWidth = 8;
-    const letterSpacing = '0.1em';
-    
-
-
-    // Function to draw text on canvas
-    function drawText() {
-        // Set text styling
-        ctx.font = textFont;
-        ctx.fillStyle = textColor;
-        ctx.strokeStyle = textStrokeColor;
-        ctx.lineWidth = textStrokeWidth;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.miterLimit = 1;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.letterSpacing = letterSpacing;
-
-        // Draw top text
-        if (topTextInput.value) {
-            const topText = topTextInput.value.toUpperCase();
-            const topTextX = canvas.width / 2;
-            const topTextY = canvas.height * 0.08; // Moved closer to top
-            
-            // Draw stroke
-            ctx.strokeText(topText, topTextX, topTextY);
-            // Draw fill
-            ctx.fillText(topText, topTextX, topTextY);
-        }
-
-        // Draw bottom text
-        if (bottomTextInput.value) {
-            const bottomText = bottomTextInput.value.toUpperCase();
-            const bottomTextX = canvas.width / 2;
-            const bottomTextY = canvas.height * 0.92; // Moved closer to bottom
-            
-            // Draw stroke
-            ctx.strokeText(bottomText, bottomTextX, bottomTextY);
-            // Draw fill
-            ctx.fillText(bottomText, bottomTextX, bottomTextY);
-        }
+    // Function to handle image loading
+    function loadImage(src) {
+        const img = new Image();
+        img.onload = () => {
+            drawImage(img);
+        };
+        img.src = src;
     }
 
-
-    // Function to draw any image on the canvas
-    function drawImage(image) {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Calculate scale to fit the image while maintaining aspect ratio
-        const imageAspectRatio = image.width / image.height;
-        const canvasAspectRatio = canvas.width / canvas.height;
-        
-        let scale;
-        if (imageAspectRatio > canvasAspectRatio) {
-            // Image is wider than canvas
-            scale = canvas.width / image.width;
-        } else {
-            // Image is taller than canvas
-            scale = canvas.height / image.height;
-        }
-        
-        const scaledWidth = image.width * scale;
-        const scaledHeight = image.height * scale;
-        
-        // Calculate position to center the image
-        const x = (canvas.width - scaledWidth) / 2;
-        const y = (canvas.height - scaledHeight) / 2;
-        
-        // Draw the image
-        ctx.drawImage(image, x, y, scaledWidth, scaledHeight);
-        
-        // Update current image reference
-        currentImage = image;
-        
-        // Draw text
-        drawText();
-    }
-
-    // Function to draw text on canvas
-    function drawText() {
-        // Set text styling
-        ctx.font = textFont;
-        ctx.fillStyle = textColor;
-        ctx.strokeStyle = textStrokeColor;
-        ctx.lineWidth = textStrokeWidth;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.miterLimit = 1;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-
-        // Draw top text
-        if (topTextInput.value) {
-            const topText = topTextInput.value.toUpperCase();
-            const topTextX = canvas.width / 2;
-            const topTextY = canvas.height * 0.08; // Moved closer to top
-            
-            // Draw stroke
-            ctx.strokeText(topText, topTextX, topTextY);
-            // Draw fill
-            ctx.fillText(topText, topTextX, topTextY);
-        }
-
-        // Draw bottom text
-        if (bottomTextInput.value) {
-            const bottomText = bottomTextInput.value.toUpperCase();
-            const bottomTextX = canvas.width / 2;
-            const bottomTextY = canvas.height * 0.92; // Moved closer to bottom
-            
-            // Draw stroke
-            ctx.strokeText(bottomText, bottomTextX, bottomTextY);
-            // Draw fill
-            ctx.fillText(bottomText, bottomTextX, bottomTextY);
-        }
-    }
-
-    // Load and draw the meme placeholder
-    const img = new Image();
-    img.src = '/src/assets/images/meme-placeholder.png';
-    img.onload = () => {
-        drawImage(img);
-    };
+    // Load initial placeholder
+    loadImage('/src/assets/images/meme-placeholder.png');
 
     // Handle image upload
     imageUpload.addEventListener('change', (e) => {
@@ -175,52 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (file) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                const uploadedImg = new Image();
-                uploadedImg.onload = () => {
-                    drawImage(uploadedImg);
-                };
-                uploadedImg.src = event.target.result;
+                loadImage(event.target.result);
             };
             reader.readAsDataURL(file);
         }
     });
 
     // Update canvas when text changes
-    topTextInput.addEventListener('input', () => {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw current image if exists
-        if (currentImage) {
-            drawImage(currentImage);
-        }
+    [topTextInput, bottomTextInput].forEach(input => {
+        input.addEventListener('input', () => {
+            if (currentImage) {
+                drawImage(currentImage);
+            }
+        });
     });
 
-    bottomTextInput.addEventListener('input', () => {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw current image if exists
-        if (currentImage) {
-            drawImage(currentImage);
-        }
-    });
-
-    // Add download functionality
-    downloadBtn.addEventListener('click', () => {
-        // Create a temporary link element
-        const link = document.createElement('a');
-        link.download = 'meme-placeholder.png';
-        
-        // Get the canvas data URL
-        const dataUrl = canvas.toDataURL('image/png');
-        
-        // Set the link href to the data URL
-        link.href = dataUrl;
-        
-        // Append the link to the body and trigger click
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    });
+    // Add download event listener
+    downloadBtn.addEventListener('click', saveMeme);
 });

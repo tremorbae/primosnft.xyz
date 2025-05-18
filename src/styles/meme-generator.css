@@ -19,7 +19,7 @@ body {
 main {
     flex: 1;
     padding: 2rem;
-    margin-top: 80px; /* Match navbar height */
+    margin-top: 40px; /* Reduced margin to position higher */
 }
 
 .test-section {

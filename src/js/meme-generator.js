@@ -6,31 +6,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const bottomTextInput = document.getElementById('bottom-text');
     const imageUpload = document.getElementById('image-upload');
 
+    // Track current image
+    let currentImage = null;
+
+    // Function to handle image loading
+    function loadImage(src) {
+        const img = new Image();
+        img.onload = () => {
+            currentImage = img;
+            drawImage(img);
+        };
+        img.src = src;
+    }
+
     // Initialize canvas with placeholder image
-    const img = new Image();
-    img.onload = () => {
-        currentImage = img;
-        // Only draw the placeholder, don't trigger download
-        drawImage(img);
-    };
-    img.src = '/src/assets/images/meme-placeholder.png';
+    loadImage('/src/assets/images/meme-placeholder.png');
 
     // Text styling
-    const textFont = 'bold 48px Impact';
-    const textColor = '#FFFFFF';
-    const textStrokeColor = '#000000';
-    const textStrokeWidth = 6; // Reduced stroke width to prevent spikes
-    const letterSpacing = '0.1em';
+    const textStyles = {
+        font: 'bold 48px Impact',
+        color: '#FFFFFF',
+        strokeColor: '#000000',
+        strokeWidth: 6,
+        miterLimit: 4
+    };
 
     // Function to draw text on canvas
     function drawText() {
-        ctx.font = textFont;
-        ctx.fillStyle = textColor;
-        ctx.strokeStyle = textStrokeColor;
-        ctx.lineWidth = textStrokeWidth;
+        ctx.font = textStyles.font;
+        ctx.fillStyle = textStyles.color;
+        ctx.strokeStyle = textStyles.strokeColor;
+        ctx.lineWidth = textStyles.strokeWidth;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.miterLimit = 4; // Reduced miter limit to prevent spikes
+        ctx.miterLimit = textStyles.miterLimit;
 
         const drawTextLine = (text, y) => {
             const x = canvas.width / 2;
@@ -60,10 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = (canvas.width - scaledWidth) / 2;
         const y = (canvas.height - scaledHeight) / 2;
         
-        // Draw the image
         ctx.drawImage(image, x, y, scaledWidth, scaledHeight);
-        
-        // Draw the text after the image
         drawText();
     }
 
@@ -86,36 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
         link.click();
     }
 
-    // Add download button event listener
-    downloadBtn.addEventListener('click', () => {
-        if (currentImage) {
-            drawImage(currentImage);
-            finalizeSave();
-        } else {
-            const img = new Image();
-            img.onload = () => {
-                drawImage(img);
-                finalizeSave();
-            };
-            img.src = '/src/assets/images/meme-placeholder.png';
-        }
-    });
-
-    // Track current image
-    let currentImage = null;
-
     // Handle image upload
     imageUpload.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                const img = new Image();
-                img.onload = () => {
-                    currentImage = img;
-                    drawImage(img);
-                };
-                img.src = event.target.result;
+                loadImage(event.target.result);
             };
             reader.readAsDataURL(file);
         }
@@ -130,6 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add download event listener
-    downloadBtn.addEventListener('click', saveMeme);
+    // Add download button event listener
+    downloadBtn.addEventListener('click', () => {
+        if (!currentImage) {
+            loadImage('/src/assets/images/meme-placeholder.png');
+            return;
+        }
+        drawImage(currentImage);
+        finalizeSave();
+    });
 });

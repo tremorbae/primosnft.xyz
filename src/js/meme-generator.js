@@ -86,6 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
         link.click();
     }
 
+    // Add download button event listener
+    downloadBtn.addEventListener('click', () => {
+        if (currentImage) {
+            drawImage(currentImage);
+            finalizeSave();
+        } else {
+            const img = new Image();
+            img.onload = () => {
+                drawImage(img);
+                finalizeSave();
+            };
+            img.src = '/src/assets/images/meme-placeholder.png';
+        }
+    });
+
     // Track current image
     let currentImage = null;
 

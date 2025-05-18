@@ -135,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const reader = new FileReader();
             reader.onload = (event) => {
                 loadImage(event.target.result);
+                // Force a redraw after image is loaded
+                if (currentImage) {
+                    drawImage(currentImage);
+                }
             };
             reader.readAsDataURL(file);
         }

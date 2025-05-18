@@ -73,16 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const LONG_PRESS_DURATION = 1000;
 
     canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Prevent default touch behavior
         touchStartTimestamp = Date.now();
         longPressTimeout = setTimeout(() => {
-            if (Date.now() - touchStartTimestamp >= LONG_PRESS_DURATION) {
-                saveMeme();
-            }
+            saveMeme();
         }, LONG_PRESS_DURATION);
     });
 
     canvas.addEventListener('touchend', () => {
         clearTimeout(longPressTimeout);
+    });
+
+    // Prevent touchmove from triggering downloads
+    canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // Prevent default touch behavior
+        clearTimeout(longPressTimeout); // Cancel any pending long press
     });
 
     // Add download functionality

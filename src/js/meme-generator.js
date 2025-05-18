@@ -67,47 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         drawText();
     }
 
-    // Add long-press functionality for mobile devices
-    let touchStartTimestamp = 0;
-    let longPressTimeout = null;
-    const LONG_PRESS_DURATION = 1000;
-
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevent default touch behavior
-        touchStartTimestamp = Date.now();
-        longPressTimeout = setTimeout(() => {
-            saveMeme();
-        }, LONG_PRESS_DURATION);
-    });
-
-    canvas.addEventListener('touchend', () => {
-        clearTimeout(longPressTimeout);
-    });
-
-    // Prevent touchmove from triggering downloads
-    canvas.addEventListener('touchmove', (e) => {
-        e.preventDefault(); // Prevent default touch behavior
-        clearTimeout(longPressTimeout); // Cancel any pending long press
-    });
-
-    // Add download functionality
-    function saveMeme() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        if (currentImage) {
-            drawImage(currentImage);
-        } else {
-            const img = new Image();
-            img.onload = () => {
-                drawImage(img);
-                finalizeSave();
-            };
-            img.src = '/src/assets/images/meme-placeholder.png';
-            return;
-        }
-        finalizeSave();
-    }
-
     function finalizeSave() {
         const link = document.createElement('a');
         const topText = topTextInput.value.trim() || 'There is no dev';

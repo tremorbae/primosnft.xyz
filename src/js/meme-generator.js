@@ -116,13 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadImage(src) {
         const img = new Image();
         img.onload = () => {
-            currentImage = img; // Track the current image
-            drawImage(img);
+            currentImage = img;
+            // Only draw if it's not the initial placeholder
+            if (src !== '/src/assets/images/meme-placeholder.png') {
+                drawImage(img);
+            }
         };
         img.src = src;
     }
 
-    // Load initial placeholder
+    // Load initial placeholder without triggering download
     loadImage('/src/assets/images/meme-placeholder.png');
 
     // Handle image upload

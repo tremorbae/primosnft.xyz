@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = new Image();
     img.onload = () => {
         currentImage = img;
+        // Only draw the placeholder, don't trigger download
         drawImage(img);
     };
     img.src = '/src/assets/images/meme-placeholder.png';

@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const bottomTextInput = document.getElementById('bottom-text');
     const imageUpload = document.getElementById('image-upload');
 
+    // Initialize canvas with placeholder image
+    const img = new Image();
+    img.onload = () => {
+        currentImage = img;
+        drawImage(img);
+    };
+    img.src = '/src/assets/images/meme-placeholder.png';
+
     // Text styling
     const textFont = 'bold 48px Impact';
     const textColor = '#FFFFFF';
@@ -50,7 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = (canvas.width - scaledWidth) / 2;
         const y = (canvas.height - scaledHeight) / 2;
         
+        // Draw the image
         ctx.drawImage(image, x, y, scaledWidth, scaledHeight);
+        
+        // Draw the text after the image
         drawText();
     }
 
@@ -112,33 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Track current image
     let currentImage = null;
 
-    // Function to handle image loading
-    function loadImage(src) {
-        const img = new Image();
-        img.onload = () => {
-            currentImage = img;
-            // Only draw if it's not the initial placeholder
-            if (src !== '/src/assets/images/meme-placeholder.png') {
-                drawImage(img);
-            }
-        };
-        img.src = src;
-    }
-
-    // Load initial placeholder without triggering download
-    loadImage('/src/assets/images/meme-placeholder.png');
-
     // Handle image upload
     imageUpload.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                loadImage(event.target.result);
-                // Force a redraw after image is loaded
-                if (currentImage) {
-                    drawImage(currentImage);
-                }
+                const img = new Image();
+                img.onload = () => {
+                    currentImage = img;
+                    drawImage(img);
+                };
+                img.src = event.target.result;
             };
             reader.readAsDataURL(file);
         }

@@ -1,0 +1,15 @@
+{
+  "name": "primos-web",
+  "version": "1.0.0",
+  "description": "Primos NFT Web Application",
+  "main": "server.js",
+  "dependencies": {
+    "@solana/web3.js": "^1.87.6",
+    "chart.js": "^4.4.1",
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
